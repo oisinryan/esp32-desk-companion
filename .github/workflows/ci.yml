@@ -1,0 +1,42 @@
+name: Validate
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  software:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: npm test
+      - run: python -m unittest discover -s tests -p 'test_*.py'
+      - run: c++ -std=c++17 -Wall -Wextra tests/pet_native.cpp -o /tmp/pet-test && /tmp/pet-test
+      - run: c++ -std=c++17 -Wall -Wextra tests/button_native.cpp -o /tmp/button-test && /tmp/button-test
+  firmware:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        profile: [pip-tft, pip-oled, codey-tft]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/cache@v4
+        with:
+          path: ~/.platformio
+          key: pio-${{ runner.os }}-${{ matrix.profile }}-${{ hashFiles('firmware/platformio.ini', 'installer/requirements.txt') }}
+      - run: python tools/install.py bootstrap
+      - if: matrix.profile == 'codey-tft'
+        run: |
+          .venv/bin/python tools/ci_assets.py
+          python tools/install.py assets --profile codey-tft --sheet artifacts/ci-sheet.webp
+      - run: python tools/install.py build --profile ${{ matrix.profile }}

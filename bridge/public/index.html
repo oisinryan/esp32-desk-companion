@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#edf0e8"><title>Pip — a little company</title><link rel="icon" href="data:,"><link rel="stylesheet" href="/style.css"><script type="module" src="/app.js"></script></head>
+<body>
+<header><a class="brand" href="/" aria-label="Pip home"><span class="brand-icon">:)</span> pip<span class="brand-dot">.</span></a><span class="eyebrow">A LITTLE COMPANY</span><span id="connection" class="connection">Connecting…</span></header>
+<main>
+<section class="intro"><div><p class="eyebrow">YOUR WI-FI DESK COMPANION</p><h1>Small pet.<br>Big personality.</h1><p class="intro-copy">A curious little friend for your corner of the world. <br>Say hello, share a thought, or just hang out.</p></div><p class="edition">PIP / 001<br><span>ESP32 EDITION</span></p></section>
+<div id="mode-note" class="notice" role="status">Connecting to your companion service…</div>
+<form id="pairing" hidden><label for="token">Pair your pet</label><div class="input-row"><input id="token" type="password" autocomplete="off" placeholder="Pairing token from your .env file" required><button type="submit">Connect</button></div><small>The token stays in this browser tab for this session.</small></form>
+<div class="workspace">
+<section class="pet-card" aria-label="Pip pet preview">
+<div class="card-top"><span class="eyebrow">MEET PIP</span><span id="mood" class="mood">Happy to see you</span></div>
+<div class="stage"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><span class="spark spark-one">✧</span><span class="spark spark-two">+</span><div class="pet-shell"><div class="screen"><canvas id="face" width="512" height="256" aria-label="Animated face of Pip"></canvas><span class="screen-label">P I P</span></div><div class="shell-bottom"><span class="speaker">•••••••</span><span class="power-light"></span></div></div><div class="shadow"></div></div>
+<p id="pet-caption" class="pet-caption">Your little pocket of calm.</p>
+<div class="needs"><div><label for="energy">Energy <span id="energy-value">80%</span></label><meter id="energy" min="0" max="100" value="80"></meter></div><div><label for="fullness">Fullness <span id="fullness-value">75%</span></label><meter id="fullness" min="0" max="100" value="75"></meter></div><div><label for="joy">Joy <span id="joy-value">75%</span></label><meter id="joy" min="0" max="100" value="75"></meter></div></div>
+<div class="care-actions"><button data-action="pet"><span>♡</span>Pet</button><button data-action="feed"><span>◒</span>Feed</button><button data-action="play"><span>✧</span>Play</button><button data-action="sleep" id="sleep"><span>☾</span>Sleep</button></div>
+</section>
+<section class="chat-card" aria-label="Chat with Pip"><div class="chat-heading"><div><p class="eyebrow">A MOMENT TOGETHER</p><h2>What’s on your mind?</h2></div><span class="chat-icon">✳</span></div><div id="messages" class="messages" role="log" aria-live="polite"><div class="welcome"><span class="tiny-face">˘ ▿ ˘</span><h3>Hello, human.</h3><p>Got a big idea? A small win?<br>I’m all ears. Metaphorically.</p></div></div><div id="thinking" class="thinking" hidden>Pip is thinking<span>…</span></div><p id="error" class="error" role="alert" hidden></p><div class="suggestions"><button data-say="Hello Pip! How are you?">Say hello ↗</button><button data-say="Tell me something cheerful.">A little pick-me-up ↗</button></div><form id="chat"><label class="sr-only" for="message">Message Pip</label><div class="input-row"><input id="message" maxlength="500" placeholder="Tell Pip something…" autocomplete="off" required><button type="submit" id="send" aria-label="Send message">↑</button></div></form><p class="chat-note" id="chat-note">A tiny friend, one thought at a time.</p></section>
+</div>
+<footer><span>Made for your desk. Happy in your company.</span><span id="delivery">LOCAL COMPANION · WI-FI</span></footer>
+</main>
+</body></html>

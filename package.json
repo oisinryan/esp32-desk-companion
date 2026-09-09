@@ -1,0 +1,16 @@
+{
+  "name": "esp32-desk-companion",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.9"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env bridge/server.mjs",
+    "demo": "node bridge/server.mjs --demo",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "version": "1.0.0",
+  "description": "Wi-Fi ESP32 pets and a local desktop companion",
+  "license": "MIT"
+}

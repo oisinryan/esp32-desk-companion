@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "profiles": {
+    "pip-tft": {"name": "Pip · ideaspark 170×320 TFT", "environment": "esp32-ideaspark", "companion": "pip", "assets": "none"},
+    "codey-tft": {"name": "Codey · ideaspark 170×320 TFT", "environment": "esp32-codey", "companion": "codey", "assets": "codey"},
+    "pip-oled": {"name": "Pip · ESP32 + SSD1306 128×64 OLED", "environment": "esp32-oled", "companion": "pip", "assets": "none"}
+  }
+}
